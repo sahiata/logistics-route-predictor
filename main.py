@@ -138,12 +138,24 @@ plt.grid(True)
 plt.show()
 
 
+# Visualization of loss over epochs
+plt.figure(figsize=(10, 5))
+plt.plot(history.history['loss'], label='Trening loss')
+plt.plot(history.history['val_loss'], label='Val loss')
+plt.title('Trening loss')
+plt.xlabel('Epochs')
+plt.ylabel('MSE')
+plt.legend()
+plt.grid(True)
+plt.show()
+
+
 # Display of actual and predicted values
 for i in range(len(y_true)):
   ruta_broj = test_indexes[i] + 1  # Adding +1 so it starts from 1
-  print(f"\nIzabrana je ruta broj: {ruta_broj}")
-  print(f"Stvarna vrednost: Trošak = {y_true[i][0]:.2f} EUR, Vreme = {y_true[i][1]:.2f} h")
-  print(f"Predikcija   : Trošak = {y_pred[i][0]:.2f} EUR, Vreme = {y_pred[i][1]:.2f} h")
+  print(f"\nChosen route number: {ruta_broj}")
+  print(f"Actual value: Total cost = {y_true[i][0]:.2f} EUR, Total Travel Time = {y_true[i][1]:.2f} h")
+  print(f"Prediction   : Total cost = {y_pred[i][0]:.2f} EUR, Total Travel Time = {y_pred[i][1]:.2f} h")
   print("-" * 50)
 # Converting to NumPy arrays if not already
 y_true = np.array(y_true)
@@ -154,21 +166,21 @@ x = np.arange(len(y_true)) + 1  # Adding +1 so it starts from 1
 
 # Displaying costs
 plt.figure(figsize=(10, 5))
-plt.plot(x, y_true[:, 0], label='Stvarni trošak', color='blue', linestyle='-')     
-plt.plot(x, y_pred[:, 0], label='Predikovani trošak', color='red', linestyle='--')  
-plt.title('Stvarni vs Predikovani troškovi')
-plt.xlabel('Redni broj test primera')
-plt.ylabel('Trošak (EUR)')
+plt.plot(x, y_true[:, 0], label='Actual value cost', color='blue', linestyle='-')     
+plt.plot(x, y_pred[:, 0], label='Prediction value cost', color='red', linestyle='--')  
+plt.title('Actual vs Prediction value cost')
+plt.xlabel('Test case serial number')
+plt.ylabel('Cost (EUR)')
 plt.legend()
 plt.tight_layout()
 plt.show()
 # Displaying times
 plt.figure(figsize=(10, 5))
-plt.plot(x, y_true[:, 1], label='Stvarno vreme', color='green', linestyle='-')     
-plt.plot(x, y_pred[:, 1], label='Predikovano vreme', color='orange', linestyle='--')  
-plt.title('Stvarno vs Predikovano vreme putovanja')
-plt.xlabel('Redni broj test primera')
-plt.ylabel('Vreme (h)')
+plt.plot(x, y_true[:, 1], label='Actual Travel Time', color='green', linestyle='-')     
+plt.plot(x, y_pred[:, 1], label='Predicted Travel time', color='orange', linestyle='--')  
+plt.title('Actual vs Predicticted Travel Time')
+plt.xlabel('Test case serial number')
+plt.ylabel('Time (h)')
 plt.legend()
 plt.tight_layout()
 plt.show()

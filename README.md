@@ -1,83 +1,71 @@
-# Route Optimization Using Machine Learning
+# Logistics Route Predictor
 
-This project demonstrates a route optimization model for freight transport from Rome to Hamburg. 
-Three test routes were randomly selected from the dataset and used to evaluate
-the model performance based on cost and time efficiency using Machine Learning techniques.
+This project is a machine learning-based solution for predicting the **cost** and **duration** of delivery routes based on a variety of real-world factors.
 
-## Technologies Used
+## 🔍 Project Description
 
-- **Python**: Programming language used for implementation.
-- **TensorFlow**: Deep learning framework for building and training the model.
-- **NumPy** and **Pandas**: For data handling and preprocessing.
-- **Google Colab**: For running and testing the project in the cloud.
+- Predicts delivery route **cost** (in EUR) and **travel time** (in hours)
+- Uses a **neural network** built with TensorFlow/Keras
+- Includes a **Flask REST API** for easy integration with external systems
+- Stores and retrieves user and API key information using **MySQL**
+- Trained model is saved as `model.h5`
 
-## Input Data
+## 📁 Project Structure
 
-The input dataset includes numerical values representing both cost-related and time-related factors, divided into two categories:
+```
+logistics-route-predictor/
+│
+├── app.py                 # Flask API logic
+├── model.h5               # Trained neural network model
+├── requirements.txt       # Python dependencies
+├── README.md              # Project documentation
+├── mysql/                 # MySQL scripts (create_tables.sql, seed_data.sql, etc.)
+└── utils/                 # (Optional) helper functions
+```
 
-### Category 1 – Cost Factors
+## 🚀 How to Run
 
-- Fuel cost
-- Tolls
-- Tunnel/bridge fees
-- Pollution taxes
-- Fines (speeding, etc.)
-- Parking
-- Driver’s wage
-- Driver’s meal cost
-- Driver’s accommodation
+1. **Clone the repository**  
+```bash
+git clone https://github.com/YOUR_USERNAME/logistics-route-predictor.git
+cd logistics-route-predictor
+```
 
-### Category 2 – Time Factors
+2. **Install requirements**  
+```bash
+pip install -r requirements.txt
+```
 
-- Route length (km)
-- Border delays
-- Traffic jams
-- Roadworks
-- Seasonal weather conditions
-- Stops for rest, refueling, meals, toll booths
-- Road safety
+3. **Set up MySQL database**  
+- Create database and run the SQL scripts in `mysql/`
+- Update connection credentials in `app.py`
 
-## Output Data
+4. **Run Flask API**  
+```bash
+python app.py
+```
 
-The model predicts two outputs:
+## 🧠 Model Details
 
-1. **Total cost** (in EUR)
-2. **Total travel time** (in hours)
+- Framework: **TensorFlow/Keras**
+- Loss Function: **MSE**
+- Optimizer: **Adam**
+- Regularization: **L2**, **Dropout**
+- Early Stopping to prevent overfitting
 
-## Machine Learning Approach
+## 🔐 API Endpoints
 
-- **Type of Learning**: Supervised Learning
-- **Model**: Neural Network implemented using TensorFlow/Keras
-- **Loss Function**: Mean Squared Error (MSE) for both cost and time predictions
-- **Optimizer**: Adam
+- `POST /predict` – Accepts route factors and returns predicted cost/time
+- `POST /register` – Register a new user (email, password, company)
+- `POST /login` – Login and get access token
+- `GET /validate` – API key validation
 
-## Training & Evaluation
+## 🛠 Technologies Used
 
-- **Training Samples**: Manually generated synthetic data (due to absence of real datasets)
-- **Training Duration**: Varies by epoch and batch size, tested 100 or 200 epochs
-- **Validation**: Performed using a held-out test set from synthetic examples
-- **Evaluation Metric**: Mean Absolute Error (MAE), R² Score
+- Python, TensorFlow, Keras, Flask, NumPy, scikit-learn, MySQL
 
-## Predefined Routes
+## 👩‍💻 Author
 
-The model was tested on 30 specific routes. Test size=0.1, 90 % Learning and 10% Testing.
-The chosen routes are random every time.
-Here are some of the results:
-
-Chosen route number: 4
-Actual value: Total Cost = 2500.00 EUR, Total Travel Time = 54.00 h
-Prediction   : Total Cost = 2498.99 EUR, Total Travel Time = 53.43 h
---------------------------------------------------
-
-Chosen route number: 23
-Actual value: Total Cost = 2600.00 EUR, Total Travel Time = 56.50 h
-Prediction   : Total Cost = 2621.35 EUR, Total Travel Time = 56.61 h
---------------------------------------------------
-
-Chosen route number: 6
-Actual value: Total Cost = 2390.00 EUR, Total Travel Time = 50.00 h
-Prediction   : Total Cost = 2371.61 EUR, Total Travel Time = 49.86 h
-
-## Notes
-
-This is a simplified demo project intended for portfolio purposes. 
+Ivana Kostić  
+[LinkedIn](https://www.linkedin.com/in/ivana-kostic-55a34a1b2/)  
+[CV Download](https://github.com/sahiata/logistics-route-predictor/blob/main/Ivana_Kostic_CV.docx)

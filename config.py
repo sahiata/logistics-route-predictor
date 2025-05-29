@@ -1,0 +1,1 @@
+API_KEY = "moj-super-tajni-kljuc"

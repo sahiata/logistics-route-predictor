@@ -68,4 +68,4 @@ python app.py
 
 Ivana Kostić  
 [LinkedIn](https://www.linkedin.com/in/ivana-kostic-55a34a1b2/)  
-[CV Download](https://github.com/sahiata/logistics-route-predictor/blob/main/Ivana_Kostic_CV.docx)
+
